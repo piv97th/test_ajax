@@ -1,3 +1,10 @@
+<?
+  require("connect.php");
+  $pr = mysqli_query($d, "SELECT name FROM tovar1");
+  $arr1 = mysqli_fetch_assoc($pr)
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +14,37 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+      $("#clicked").click(function(){
+        /*var data = {
+          dog: 1,
+          car: 1,
+          phone: 3,
+        };
+        var json = JSON.stringify(data);*/
+        var one = 1;
+        $.ajax({
+          type: 'POST',
+          url: 'handler.php',
+          data: {one},
+          async: false,
+          success: function(answer)
+          {
+            //var obj = JSON.parse(answer);
+            //var obj1 = JSON.stringify(answer);
+            var obj = JSON.parse(answer);
+            for(var vari in obj)
+            {
+              $("#out").append(obj[vari]+"<br/>");
+            }
+          }
+
+        //$("#out").html(obj+"<br/>");
+      });
+      });
+    });
+  </script>
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */ 
     .navbar {
@@ -60,6 +98,17 @@
     </div>
   </div>
 </nav>
+
+<div class="container-fluid" id="out">
+  <button type="button" class="btn btn-primary" id="clicked">CLICK</button>
+  <?
+      while($arr = mysqli_fetch_assoc($pr))
+  {
+    echo $arr['name']."<br/>";
+  }
+  var_dump($arr1);
+  ?>
+</div>
 
 <footer class="container-fluid text-center">
   <p>Online Store Copyright</p>  
