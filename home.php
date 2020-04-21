@@ -25,13 +25,6 @@
       padding: 25px;
     }
   </style>
-  <script>
-    $(document).ready(function() {
-      $("#home").click(function() {
-       return false;
-      });
-    });
-  </script>
 </head>
 <body>
 
@@ -50,11 +43,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="index.php">Logo</a>
+      <a class="navbar-brand" href="index.php" class="active">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#" disabled class="disabled" id='home'>Home</a></li>
+        <li><a href="home.php">Home</a></li>
         <li><a href="#">Products</a></li>
         <li><a href="#">Deals</a></li>
         <li><a href="#">Stores</a></li>
